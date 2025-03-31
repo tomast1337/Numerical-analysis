@@ -34,10 +34,10 @@ def gauss_jordan_pivot(A: np.array, B: np.array):
         A[i] = A[i] / pivot
         B[i] = B[i] / pivot
 
-        # print current state of A and B
-        print(f"Step {i}:")
-        print("A =\n", A)
-        print("B =\n", B)
+        # Print the augmented matrix after scaling
+        print(f"Step {i + 1}: Scaling row {i + 1}")
+        augmented_matrix = np.hstack((A, B.reshape(-1, 1)))
+        print(augmented_matrix)
 
         # elimination
         for j in range(n):
@@ -46,8 +46,12 @@ def gauss_jordan_pivot(A: np.array, B: np.array):
                 B[j] = B[j] - factor * B[i]
                 A[j] = A[j] - factor * A[i]
 
-    return B
+                # Print the augmented matrix after elimination
+                print(f"Step {i + 1}.{j + 1}: Eliminating row {j + 1}")
+                augmented_matrix = np.hstack((A, B.reshape(-1, 1)))
+                print(augmented_matrix)
 
+    return B
 
 def test():
     # Test cases
