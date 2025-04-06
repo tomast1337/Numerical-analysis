@@ -1,5 +1,5 @@
 import "./App.css";
-import { MatrixSolver } from "./matrix-solve-ui";
+import { MatrixSolver } from "./components/MatrixSolver";
 
 function App() {
   return (
