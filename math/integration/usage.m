@@ -12,11 +12,19 @@ fprintf('Simpson''s Rule : %.8f\n', I_simp);
 
 %
 f = @(x) exp(x);
+
 a = 0
 b = 1
 h = (a-b) / 5
+
 x = a:h:b
 y = f(x)
+
 Isimpson = h/3 * (y(1) + 4 * sum(y(2:2:end-1)) + 2 * sum(y(3:2:end-2)) + y(end));
 ITrapzoid = h * 0.5 * (y(1) + 2*sum(y(2:end-1)) + y(end));
+I = quad(f,a,b)
+
+% Display differences
+disp(['Erro no metodo de Simpson: ', num2str(abs(I - Isimpson))])
+disp(['Error no metodo do Trapezio: ', num2str(abs(I - ITrapzoid))])
 %
